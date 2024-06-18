@@ -30,6 +30,7 @@
 .filterBar{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     width: 278px;
     height: 133px;
@@ -48,7 +49,10 @@
 }
 .choices{
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+}
+.choices > div{
+    width: 120px;
 }
 
 .filterBtn{
@@ -62,6 +66,9 @@
     color: white;
     font-size: 15px;
     font-weight: 700;
+}
+.filterBtn:hover{
+    cursor: pointer;
 }
 
 .table{
@@ -98,7 +105,7 @@
 .dataContainer .info, .dataDisableContainer .info{
     display: flex;
     flex-direction: column;
-    width: 130px;
+    width: 40%;
     height: 82px;
     margin: 10px 0px;
 }
@@ -113,8 +120,9 @@
     justify-content: center;
     font-size: 16px;
     font-weight: 600;
-    width: 60px;
+    width: 30%;
     margin-top: 10px;
+    text-align: center;
 }
 .dataDisableContainer .header{
     color: white;
@@ -184,6 +192,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
+    color: #000;
     border-radius: 5px;
     width: 100%;
     height: 50%;
@@ -210,3 +220,100 @@
 }
 
 
+@media screen and (min-width: 1000px) {
+    .container{
+        margin-top: 50px;
+    }
+    
+    .searchBar{
+        width: 450px;
+        height: 50px;   
+    }
+    
+    .filterBar{
+        margin-top: 30px;
+        width: 600px;
+        height: 128px;
+    }
+    .filterInputs{
+        display: flex;  
+    }
+    .filterBar div > .header{
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    .ownFilter, .useableFilter{
+        flex-direction: row;
+    }
+    .choices{
+        flex-direction: column;
+    }
+    .choices > div{
+        width: 140px;
+    }
+    .filterBar div > .header, .filterBtn{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    .filterBar div .choices > div label{
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .filterBtn{
+        margin-top: 15px;
+    }
+
+    .table{
+        margin-top: 30px;
+        width: 900px;
+        height: 700px;
+        border-radius: 15px;
+    }
+
+    .dataContainer, .dataDisableContainer{
+        width: 800px;
+        height: 108px;
+        border-radius: 5px;
+    }
+    .dataContainer .header , .dataDisableContainer .header{
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .dataContainer .info, .dataDisableContainer .info{
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+    }
+
+    .dataContainer .info > div, .dataDisableContainer .info > div{
+        height: 18px;
+    }
+    .dataContainer .info > div label, 
+    .dataDisableContainer .info > div label, 
+    .dataContainer .info > div p, 
+    .dataDisableContainer .info > div p{
+        font-size: 18px;
+    }
+
+    .ownState{
+        width: 105px;
+        height: 32px;
+    }
+    .ownState p{
+        font-size: 20px;
+    }
+
+    .functionList{
+        width: 90px;
+        height: 46px;
+    }
+
+    .addBtn{
+        width: 45px;
+        height: 45px;
+        bottom: 38px;
+        right: 100px;
+    }
+}

@@ -1,11 +1,17 @@
 .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 320px;
 }
 .header{
     display: flex;
+    width: 316px;
     margin-top: 26px;
 }
 .title{
+    display: flex;
+    align-items: center;
     margin-left: 10px;
     font-size: 20px;
     font-weight: 700;
@@ -15,15 +21,16 @@
     width: 316px;
     height: 42px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     border-radius: 5px;
     background: #E0EFFF;
     margin: 7.5px 0px;
 }
 
-.icon{
-    margin-left: 20px;
+.inputval{
+    display: flex;
+    align-items: center;
 }
 .inputval > select, .inputval > input[type="text"]{
     width: 224px;
@@ -39,7 +46,6 @@
     background: #E0EFFF;
 }
 .inputval > input[type="checkbox"]{
-    margin-left: 28px;
     margin-right: 15px;
 }
 
@@ -71,4 +77,53 @@
     color: white;
     font-size: 20px;
     font-weight: 700;
+}
+
+@media screen and (min-width: 1000px) {
+    .container{
+        margin-top: 72px;
+    }
+    .header{
+        width: 582px;
+    }
+    .backBtn > svg{
+        width: 30px;
+        height: 50px;
+    }
+    .backBtn > .title{
+        font-size: 32px;
+    }
+    
+    .inputContainer{
+        width: 582px;
+        height: 77px;
+    }
+    .inputContainer .icon > svg{
+        width: 59px;
+        height: 59px;
+    }
+    .inputval > select, .inputval > input[type="text"]{
+        width: 428px;
+        height: 49px;
+    }
+    .input1 > .inputval input{
+        width: 200px;
+    }
+    .input2 > .inputval input{
+        width: 138px;
+    }
+    .inputval > input[type="checkbox"]{
+        width: 33px;
+        height: 33px;
+    }
+    .inputval > label{
+        font-size: 20px;
+        font-weight: 500;
+    }
+    .functionBtn{
+        flex-direction: row;
+    }
+    .functionBtn > div{
+        margin: 0px 10px;
+    }
 }

@@ -44,50 +44,52 @@ function Stock() {
           </div>
         </div>
         <div className={style.filterBar}>
-          <div className={style.ownFilter}>
-            <div className={style.header}>My-own</div>
-            <div className={style.choices}>
-              <div>
-                <input
-                  type='radio'
-                  id='1'
-                  name='own_choices1'
-                  value='1'
-                />
-                <label>เป็นเจ้าของ</label>
-              </div>
-              <div>
-                <input
-                  type='radio'
-                  id='0'
-                  name='own_choices2'
-                  value='0'
-                />
-                <label>ไม่เป็นเจ้าของ</label>
-              </div>
-            </div>
-          </div>
-          <div className={style.useableFilter}>
-            <div className={style.header}>การใช้งาน</div>
-            <div className={style.choices}>
+          <div className={style.filterInputs}>
+            <div className={style.ownFilter}> 
+              <div className={style.header}>My-own</div>
+              <div className={style.choices}>
                 <div>
                   <input
                     type='radio'
                     id='1'
-                    name='useable_choices1'
+                    name='own_choices1'
                     value='1'
                   />
-                  <label>ENABLE</label>
+                  <label>เป็นเจ้าของ</label>
                 </div>
                 <div>
                   <input
                     type='radio'
                     id='0'
-                    name='useable_choices2'
+                    name='own_choices2'
                     value='0'
                   />
-                  <label>DISABLE</label>
+                  <label>ไม่เป็นเจ้าของ</label>
                 </div>
+              </div>
+            </div>
+            <div className={style.useableFilter}>
+              <div className={style.header}>การใช้งาน</div>
+              <div className={style.choices}>
+                  <div>
+                    <input
+                      type='radio'
+                      id='1'
+                      name='useable_choices1'
+                      value='1'
+                    />
+                    <label>ENABLE</label>
+                  </div>
+                  <div>
+                    <input
+                      type='radio'
+                      id='0'
+                      name='useable_choices2'
+                      value='0'
+                    />
+                    <label>DISABLE</label>
+                  </div>
+              </div>
             </div>
           </div>
           <div className={style.filterBtn} onClick={handleClearFilters}>FILTER</div>
@@ -118,7 +120,7 @@ function Stock() {
                   </div>
                   <div className={style.useable}>
                     <p>การใช้งาน :</p>
-                    <label> {item.usesable}</label>
+                    <label> {item.usesable === 1 ? 'ENABLE': 'DISABLE'}</label>
                   </div>
                 </div>
                 <div className={style.state}>

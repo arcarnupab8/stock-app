@@ -29,7 +29,7 @@
 }
 .menulist{
     position: absolute;
-    top: 5.8%;
+    top: 43px;
     background-color: white;
     width: 148px;
     border-radius: 0px 0px 15px 15px;
@@ -54,15 +54,80 @@
 
 .signoutButton{
     display: flex;
-    width: 110px;
-    margin: 10px;
+    padding: 0px 10px;
     justify-content: space-around;
     align-items: center;
 }
+.signoutButton:hover{
+    cursor: pointer;
+    background: #0078D4;
+    height: 100%;
+}
+.signoutButton > p:hover{
+    color: white;
+}
 
-a{
+.menulist div > a{
     color: #000;
     text-decoration: none;
     font-size: 12px;
     font-family: Inter;
+}
+
+.menuBar{
+    display: none;
+    align-items: center;
+}
+.menu{
+}
+.menuBar a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 10px;
+    height: 100%;
+    text-decoration: none;
+    color: #000;
+}
+.menuBar a > .menuName{
+    margin-left: 5px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+}
+.menuBar a:hover{
+    background: #0078D4;
+    height: 80%;
+}
+.menuBar a > .menuName:hover{
+    color: white;
+}
+.spaceline{
+    width: 1px;
+    height: 50px;
+    background: #000;
+}
+
+
+@media screen and (min-width: 1000px) {
+    .container{
+        height: 75px;
+    }
+    .dropdownMenu{
+        display: none;
+    }
+    .menuBar{
+        display: flex;
+    }
+
+    .signoutButton > p{
+        font-size: 20px;
+        text-align: center;
+    }
+    .signoutButton .signoutIcon > svg{
+        width: 35px;
+        height: 35px;
+    }
+    
 }
