@@ -149,18 +149,21 @@ function EditStock(){
           </div>
         </div>
         <div className={style.inputContainer}>
-          <div className={style.inputval}>
-            {myOWN === true? (
+          <div className={style.inputMyownWrap}>
+            <div className={style.inputval}>
               <input
                 type='checkbox'
-                checked
+                value='1'
               />
-            ):(
+              <label>My-own</label>
+            </div>
+            <div className={style.inputval}>
               <input
                 type='checkbox'
+                value='0'
               />
-            )}
-            <label>My-own</label>
+              <label>Not-Myown</label>
+            </div>
           </div>
         </div>
       </div>

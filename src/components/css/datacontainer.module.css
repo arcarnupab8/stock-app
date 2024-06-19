@@ -1,0 +1,169 @@
+.dataContainer{
+    width: 356px;
+    height: 108px;
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    margin: 6px 0px ;
+}
+.dataDisableContainer{
+    width: 356px;
+    height: 108px;
+    display: flex;
+    justify-content: space-around;
+    background: #B2B1B1;
+    margin: 6px 0px ;
+}
+
+
+.dataContainer .info, .dataDisableContainer .info{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 82px;
+    margin: 10px 0px;
+}
+.dataContainer .info > div, .dataDisableContainer .info > div{
+    display: flex;
+    align-items: center;
+    height: 20%;
+}
+
+.dataContainer .header , .dataDisableContainer .header{
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    width: 30%;
+    margin-top: 10px;
+    text-align: center;
+}
+.dataDisableContainer .header{
+    color: white;
+}
+
+.dataContainer .info > div label, .dataDisableContainer .info > div label{
+    font-size: 14px;
+}
+.dataDisableContainer .info > div label{
+    color: white;
+}
+
+.dataContainer .info > div p, .dataDisableContainer .info > div p{
+    font-size: 14px;
+    font-weight: 700;
+}
+.dataDisableContainer .info > div p{
+    color: white;
+}
+
+.dataContainer .state, .dataDisableContainer .state{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+}
+
+.ownState{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 72px;
+    height: 24px;
+    background: #F00;
+}
+.ownState p{
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+
+.notownState{
+    opacity: 0;
+}
+
+.actionBtn{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.functionList{
+    position: absolute;
+    width: 84px;
+    height: 44px;
+    right: 0%;
+    top: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #E0EFFF;
+    border-radius: 5px;
+    border: 1;
+}
+.functionList > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    width: 100%;
+    height: 50%;
+}
+.functionList > a:hover{
+    background: #0078D4;
+    color: white;
+}
+
+@media screen and (min-width: 1000px) {
+    .dataContainer, .dataDisableContainer{
+        flex-direction: column;
+        width: 240px;
+        height: 220px;
+        border-radius: 5px;
+        margin: 11px 7px;
+    }
+    .dataContainer .header , .dataDisableContainer .header{
+        justify-content: flex-start;
+        margin-left: 22px;
+        width: 100%;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    .dataContainer .info, .dataDisableContainer .info{
+        width: 100%;
+        height: 95px;
+        margin-left: 36px;
+    }
+
+    .dataContainer .info > div, .dataDisableContainer .info > div{
+        height: 18px;
+    }
+    .dataContainer .info > div label, 
+    .dataDisableContainer .info > div label, 
+    .dataContainer .info > div p, 
+    .dataDisableContainer .info > div p{
+        font-size: 16px;
+    }
+
+    .dataContainer .state, .dataDisableContainer .state{
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    .ownState{
+        width: 105px;
+        height: 32px;
+    }
+    .ownState p{
+        font-size: 20px;
+    }
+
+    .functionList{
+        width: 90px;
+        height: 46px;
+    }
+}

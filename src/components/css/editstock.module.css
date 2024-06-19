@@ -4,6 +4,9 @@
     align-items: center;
     width: 320px;
 }
+.backBtn > svg:hover{
+    cursor: pointer;
+}
 .header{
     display: flex;
     width: 316px;
@@ -45,6 +48,15 @@
     border-bottom: 1px solid #0078D4;
     background: #E0EFFF;
 }
+
+.inputMyownWrap{
+    display: flex;
+    justify-content: space-between;
+}
+.inputMyownWrap > div{
+    margin: 0px 6px;
+    width: 120px;
+}
 .inputval > input[type="checkbox"]{
     margin-right: 15px;
 }
@@ -77,6 +89,9 @@
     color: white;
     font-size: 20px;
     font-weight: 700;
+}
+.functionBtn > .button{
+    cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {
@@ -111,6 +126,10 @@
     }
     .input2 > .inputval input{
         width: 138px;
+    }
+    .inputMyownWrap > div {
+        margin: 0px 10px;
+        width: 200px;
     }
     .inputval > input[type="checkbox"]{
         width: 33px;

@@ -107,12 +107,21 @@ function Addstock() {
           </div>
         </div>
         <div className={style.inputContainer}>
-          <div className={style.inputval}>
-            <input
-              type='checkbox'
-              value='1'
-            />
-            <label>My-own</label>
+          <div className={style.inputMyownWrap}>
+            <div className={style.inputval}>
+              <input
+                type='checkbox'
+                value='1'
+              />
+              <label>My-own</label>
+            </div>
+            <div className={style.inputval}>
+              <input
+                type='checkbox'
+                value='0'
+              />
+              <label>Not-Myown</label>
+            </div>
           </div>
         </div>
       </div>
