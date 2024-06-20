@@ -110,7 +110,7 @@
 }
 
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1366px) {
     .container{
         height: 75px;
     }

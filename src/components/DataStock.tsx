@@ -8,7 +8,7 @@ interface Product {
     myown: number;
 }
 
-export const products = [
+export const products: Product[] = [
     {id: "0001", name: "กระดาษ",price: 1000, quantity: 100, unit: "รีม", usesable:1, myown:1},
     {id: "0002", name: "พลาสตืก",price: 3000, quantity: 100, unit: "ม้วน", usesable:0, myown:0},
     {id: "0003", name: "กระจก",price: 5000, quantity: 150, unit: "แผ่น", usesable:1, myown:1},

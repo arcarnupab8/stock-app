@@ -94,7 +94,7 @@
     cursor: pointer;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1366px) {
     .container{
         margin-top: 72px;
     }

@@ -1,15 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './css/stock.module.css';
 import { products } from './DataStock';
 import { Link, useNavigate } from 'react-router-dom';
 import DataContainer from './Datacontainer';
+import Checkbox from '@mui/material/Checkbox';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+// import axios from 'axios'; change when use api fetch products info
 
 function Stock() {
-  const [searchkey, setSearchkey] = useState('');
-  const [ownFilter, setOwnFilter] = useState([]);
-  const [useableFilter, setUseableFilter] = useState([]);
-  const [selectedOwn, setSelectedOwn] = useState(false);
-  const [selectedUsesable, setSelectedUsesable] = useState(false);
+  const [searchkey, setSearchkey] = useState<string>('');
+  const [ownFilter, setOwnFilter] = useState<number[]>([]);
+  const [useableFilter, setUseableFilter] = useState<number[]>([]);
+  
+  //const [products, setProducts] = useState<any[]>([]); change when use api fetch products info
+
+  // function getproduct data by api
+  // const getDataprodicts = () =>{ 
+  //   try {
+  //     const response = axios.get('Please URL here');
+  //     setProducts(response.data)
+  //   }
+  //   catch(error){
+  //     console.log('Error fetch ProductData:' error);
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getDataprodicts();
+  // },[])
 
   const handleFilter = () => {
     console.log(ownFilter, useableFilter);
@@ -19,7 +38,7 @@ function Stock() {
     console.log(searchkey);
   }
 
-  const handleOwnFilterChange = (event) => {
+  const handleOwnFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value);
     setOwnFilter((prevFilter) => {
       if (prevFilter.includes(value)) {
@@ -30,7 +49,7 @@ function Stock() {
     });
   };
 
-  const handleUseableFilterChange = (event) => {
+  const handleUseableFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(event.target.value);
     setUseableFilter((prevFilter) => {
       if (prevFilter.includes(value)) {
@@ -69,23 +88,23 @@ function Stock() {
               <div className={style.header}>My-own</div>
               <div className={style.choices}>
                 <div>
-                  <input
-                    type='radio'
-                    id='1'
-                    name='own_choices1'
-                    value={1}
-                    onChange={handleOwnFilterChange}
-                  />
+                    <Checkbox 
+                      className={style.selecterChoice}
+                      icon={<RadioButtonUncheckedIcon/>}
+                      checkedIcon={<RadioButtonCheckedIcon/>}
+                      value={1}
+                      onClick={handleOwnFilterChange}
+                    />
                   <label>เป็นเจ้าของ</label>
                 </div>
                 <div>
-                  <input
-                    type='radio'
-                    id='0'
-                    name='own_choices2'
-                    value={0}
-                    onChange={handleOwnFilterChange}
-                  />
+                    <Checkbox 
+                      className={style.selecterChoice}
+                      icon={<RadioButtonUncheckedIcon/>}
+                      checkedIcon={<RadioButtonCheckedIcon/>}
+                      value={0}
+                      onClick={handleOwnFilterChange}
+                    />
                   <label>ไม่เป็นเจ้าของ</label>
                 </div>
               </div>
@@ -94,22 +113,22 @@ function Stock() {
               <div className={style.header}>การใช้งาน</div>
               <div className={style.choices}>
                   <div>
-                    <input
-                      type='radio'
-                      id='1'
-                      name='useable_choices1'
+                    <Checkbox 
+                      className={style.selecterChoice}
+                      icon={<RadioButtonUncheckedIcon/>}
+                      checkedIcon={<RadioButtonCheckedIcon/>}
                       value={1}
-                      onChange={handleUseableFilterChange}
+                      onClick={handleUseableFilterChange}
                     />
                     <label>ENABLE</label>
                   </div>
                   <div>
-                    <input
-                      type='radio'
-                      id='0'
-                      name='useable_choices2'
+                    <Checkbox 
+                      className={style.selecterChoice}
+                      icon={<RadioButtonUncheckedIcon/>}
+                      checkedIcon={<RadioButtonCheckedIcon/>}
                       value={0}
-                      onChange={handleUseableFilterChange}
+                      onClick={handleUseableFilterChange}
                     />
                     <label>DISABLE</label>
                   </div>

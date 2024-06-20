@@ -32,7 +32,7 @@
 .dataContainer .header , .dataDisableContainer .header{
     display: flex;
     justify-content: center;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     width: 30%;
     margin-top: 10px;
@@ -43,14 +43,14 @@
 }
 
 .dataContainer .info > div label, .dataDisableContainer .info > div label{
-    font-size: 14px;
+    font-size: 15px;
 }
 .dataDisableContainer .info > div label{
     color: white;
 }
 
 .dataContainer .info > div p, .dataDisableContainer .info > div p{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 700;
 }
 .dataDisableContainer .info > div p{
@@ -68,12 +68,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 72px;
+    width: 78px;
     height: 24px;
     background: #F00;
 }
 .ownState p{
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     color: white;
 }
@@ -117,53 +117,10 @@
     color: white;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1366px) {
     .dataContainer, .dataDisableContainer{
-        flex-direction: column;
-        width: 240px;
-        height: 220px;
         border-radius: 5px;
-        margin: 11px 7px;
+        margin: 10px 10px;
     }
-    .dataContainer .header , .dataDisableContainer .header{
-        justify-content: flex-start;
-        margin-left: 22px;
-        width: 100%;
-        font-size: 20px;
-        font-weight: 700;
-    }
-
-    .dataContainer .info, .dataDisableContainer .info{
-        width: 100%;
-        height: 95px;
-        margin-left: 36px;
-    }
-
-    .dataContainer .info > div, .dataDisableContainer .info > div{
-        height: 18px;
-    }
-    .dataContainer .info > div label, 
-    .dataDisableContainer .info > div label, 
-    .dataContainer .info > div p, 
-    .dataDisableContainer .info > div p{
-        font-size: 16px;
-    }
-
-    .dataContainer .state, .dataDisableContainer .state{
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 12px;
-    }
-    .ownState{
-        width: 105px;
-        height: 32px;
-    }
-    .ownState p{
-        font-size: 20px;
-    }
-
-    .functionList{
-        width: 90px;
-        height: 46px;
-    }
+    
 }
