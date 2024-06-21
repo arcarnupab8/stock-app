@@ -1,49 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import style from './css/editstock.module.css'
-import { products } from './DataStock';
+import { Checkbox } from '@mui/material';
+import { productProps } from './type/productOBJ';
 
 function EditStock(){
-  const { productId } = useParams();
-  const [info, setInfo] = useState({
-    id: '',
-    name: '',
-    price: 0,
-    quantity: 0,
-    unit: '',
-    usesable: 0,
-    myown: 0,
+  const { productId, name, price, quantity, unit, myown, usesable } = useParams();
+  const [info, setInfo] = useState<productProps>({
+    name: String(name),
+    productid: String(productId),
+    price: parseFloat(price),
+    quantity: parseInt(quantity),
+    unit: String(unit),
+    usesable: parseInt(usesable),
+    myown: parseInt(myown),
   });
-  const [myOWN, setMyOWN] = useState(true);
-  const handlemyOWN = () =>{
-    if(info.myown === 0){
-      setMyOWN(false);
-    }
-    else{
-      setMyOWN(true);
-    }
+
+  const handlesubmit = () =>{
+    console.log(info)
   }
-  useEffect(() => {
-    const product = products.find(p => p.id === productId);
-    if (product) {
-      setInfo({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: product.quantity,
-        unit: product.unit,
-        usesable: product.usesable,
-        myown: product.myown,
-      });
-    }
-    handlemyOWN();
-  }, [productId]);
 
   const navigate = useNavigate();
   const handlebackBtn = () =>{
     navigate('/manageStock');
   }
-  console.log(info)
+
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -63,7 +44,9 @@ function EditStock(){
             </svg>
           </div>
           <div className={style.inputval}>
-            <select name="useable" id="useable"  value={info.usesable} className={style.useableinputval}>
+            <select name="useable" id="useable" 
+                    value={info.usesable} className={style.useableinputval}
+                    onChange={(e) => setInfo({ ...info, usesable: parseInt(e.target.value) })}>
               <option value="1">ENABLE</option>
               <option value="0">DISABLE</option>
             </select>
@@ -83,7 +66,8 @@ function EditStock(){
             <input
               type='text'
               placeholder='0000'
-              value={info.id}
+              value={info.productid}
+              onChange={(e) => setInfo({ ...info, productid: e.target.value })}
             />
           </div>
         </div>
@@ -102,6 +86,7 @@ function EditStock(){
               type='text'
               placeholder='Name'
               value={info.name}
+              onChange={(e) => setInfo({ ...info, name: e.target.value })}
             />
           </div>
         </div>
@@ -116,6 +101,7 @@ function EditStock(){
               type='text'
               placeholder='0'
               value={info.price}
+              onChange={(e) => setInfo({ ...info, price: parseFloat(e.target.value) })}
             />
           </div>
         </div>
@@ -132,6 +118,7 @@ function EditStock(){
                 type='text'
                 placeholder='0'
                 value={info.quantity}
+                onChange={(e) => setInfo({ ...info, quantity: parseInt(e.target.value) })}
               />
             </div>
           </div>
@@ -144,6 +131,7 @@ function EditStock(){
                 type='text'
                 placeholder='-'
                 value={info.unit}
+                onChange={(e) => setInfo({ ...info, unit: e.target.value })}
               />
             </div>
           </div>
@@ -151,24 +139,38 @@ function EditStock(){
         <div className={style.inputContainer}>
           <div className={style.inputMyownWrap}>
             <div className={style.inputval}>
-              <input
-                type='checkbox'
-                value='1'
-              />
+              {info.myown === 1 ? (
+                <Checkbox 
+                  checked={true} 
+                  onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 1 : 0 })}
+                />
+              ):(
+                <Checkbox 
+                  checked={false}
+                  onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 1 : 0 })}
+                />
+              )}
               <label>My-own</label>
             </div>
             <div className={style.inputval}>
-              <input
-                type='checkbox'
-                value='0'
-              />
+              {info.myown === 0 ? (
+                <Checkbox 
+                  checked={true} 
+                  onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 0 : 1 })}
+                />
+              ):(
+                <Checkbox 
+                  checked={false} 
+                  onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 0 : 1 })}
+                />
+              )}
               <label>Not-Myown</label>
             </div>
           </div>
         </div>
       </div>
       <div className={style.functionBtn}>
-        <div className={style.button}>ยืนยัน</div>
+        <div className={style.button} onClick={handlesubmit}>ยืนยัน</div>
         <div className={style.button} onClick={handlebackBtn}>ยกเลิก</div>
       </div>
     </div>

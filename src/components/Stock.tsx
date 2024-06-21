@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import style from './css/stock.module.css';
 import { products } from './DataStock';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DataContainer from './Datacontainer';
 import Checkbox from '@mui/material/Checkbox';
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import { productProps } from './type/productOBJ';
 // import axios from 'axios'; change when use api fetch products info
 
 function Stock() {
@@ -13,7 +14,7 @@ function Stock() {
   const [ownFilter, setOwnFilter] = useState<number[]>([]);
   const [useableFilter, setUseableFilter] = useState<number[]>([]);
   
-  //const [products, setProducts] = useState<any[]>([]); change when use api fetch products info
+  //const [products, setProducts] = useState<productProps[]>([]); change when use api fetch products info
 
   // function getproduct data by api
   // const getDataprodicts = () =>{ 
@@ -66,11 +67,11 @@ function Stock() {
     navigate('/manageStock/add');
   }
 
-  const handleAction = (action: string, productid: string) => {
+  const handleAction = (action: string, item: any) => {
     if (action === 'edit') {
-      navigate(`/manageStock/Edit/${productid}`);
+      navigate(`/manageStock/Edit/${item.productid}/${item.name}/${item.price}/${item.quantity}/${item.unit}/${item.myown}/${item.usesable}`);
     } else if (action === 'delete') {
-      console.log(`Delete product with id: ${productid}`);
+      console.log(`Delete product with id: ${item.id}`);
     }
   };
   return (
@@ -149,13 +150,8 @@ function Stock() {
       <div className={style.table}>
           {products.map((item,index) => (
             <DataContainer
-              name={item.name}
-              productid={item.id}
-              price={item.price}
-              quantity={item.quantity}
-              unit={item.unit}
-              usesable={item.usesable}
-              myown={item.myown}
+              key={index}
+              info={item}
               onClick={handleAction}
             />
           ))}

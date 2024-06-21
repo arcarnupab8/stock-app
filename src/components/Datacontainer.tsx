@@ -1,25 +1,14 @@
 import React, { useState } from "react";
 import style from "./css/datacontainer.module.css";
+import { productProps } from "./type/productOBJ";
 
 interface DataContainerProps {
-  name: string;
-  productid: string;
-  price: number;
-  quantity: number;
-  unit: string;
-  usesable: number;
-  myown: number;
-  onClick: (action: string, productid: string) => void;
+  info: productProps;
+  onClick: (action: string, item: productProps) => void;
 }
 
 const DataContainer: React.FC<DataContainerProps> = ({
-  name,
-  productid,
-  price,
-  quantity,
-  unit,
-  usesable,
-  myown,
+  info,
   onClick
 }) => {
 
@@ -32,36 +21,36 @@ const DataContainer: React.FC<DataContainerProps> = ({
   return (
     <div
       className={`${
-        usesable === 1 ? style.dataContainer : style.dataDisableContainer
+        info.usesable === 1 ? style.dataContainer : style.dataDisableContainer
       }`}
     >
-      <div className={style.header}>{name}</div>
+      <div className={style.header}>{info.name}</div>
       <div className={style.info}>
         <div className={style.pcode}>
           <p>รหัสสินค้า :</p>
-          <label> {productid}</label>
+          <label> {info.productid}</label>
         </div>
         <div className={style.price}>
           <p>
             ราคา {"("}THB{")"} :
           </p>
-          <label> {price}</label>
+          <label> {info.price}</label>
         </div>
         <div className={style.quantity}>
           <p>จำนวน :</p>
-          <label> {quantity}</label>
+          <label> {info.quantity}</label>
         </div>
         <div className={style.unit}>
           <p>หน่วย :</p>
-          <label> {unit}</label>
+          <label> {info.unit}</label>
         </div>
         <div className={style.useable}>
           <p>การใช้งาน :</p>
-          <label> {usesable === 1 ? "ENABLE" : "DISABLE"}</label>
+          <label> {info.usesable === 1 ? "ENABLE" : "DISABLE"}</label>
         </div>
       </div>
       <div className={style.state}>
-        {myown == 1 ? (
+        {info.myown == 1 ? (
           <div className={style.ownState}>
             <p>MY-OWN</p>
           </div>
@@ -105,8 +94,8 @@ const DataContainer: React.FC<DataContainerProps> = ({
           </div>
           {isOpen && (
             <div className={style.functionList}>
-              <div onClick={() => onClick('edit', productid)}>แก้ไขข้อมูล</div>
-              <div onClick={() => onClick('delete', productid)}>ลบข้อมูล</div>
+              <div onClick={() => onClick('edit', info)}>แก้ไขข้อมูล</div>
+              <div onClick={() => onClick('delete', info)}>ลบข้อมูล</div>
             </div>
           )}
         </div>

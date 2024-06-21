@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './css/addstock.module.css';
 import { useNavigate } from 'react-router-dom';
+import { Checkbox } from '@mui/material';
+import { productProps } from "./type/productOBJ";
 
-function Addstock() {
+const Addstock: React.FC = () => {
   const navigate = useNavigate();
+  const [info, setInfo] = useState<productProps>({
+    name: '',
+    productid: '',
+    price: 0,
+    quantity: 0,
+    unit: '',
+    usesable: 0,
+    myown: 0,
+  });
+
+  const handlesubmit = () =>{
+    console.log(info)
+  }
+
   const handlebackBtn = () =>{
     navigate('/manageStock');
   }
+
   return (
     <div className={style.container}>
       <div className={style.header}>
@@ -26,9 +43,10 @@ function Addstock() {
             </svg>
           </div>
           <div className={style.inputval}>
-            <select name="useable" id="useable" className={style.useableinputval}>
-              <option value="1">ENABLE</option>
-              <option value="0">DISABLE</option>
+            <select name="useable" id="useable" 
+                    className={style.useableinputval} onChange={(e) => setInfo({ ...info, usesable: parseInt(e.target.value) })}>
+              <option value={1}>ENABLE</option>
+              <option value={0}>DISABLE</option>
             </select>
           </div>
         </div>
@@ -46,6 +64,7 @@ function Addstock() {
             <input
               type='text'
               placeholder='0000'
+              onChange={(e) => setInfo({ ...info, productid: e.target.value })}
             />
           </div>
         </div>
@@ -63,6 +82,7 @@ function Addstock() {
             <input
               type='text'
               placeholder='Name'
+              onChange={(e) => setInfo({ ...info, name: e.target.value })}
             />
           </div>
         </div>
@@ -76,6 +96,7 @@ function Addstock() {
             <input
               type='text'
               placeholder='0'
+              onChange={(e) => setInfo({ ...info, price: parseFloat(e.target.value) })}
             />
           </div>
         </div>
@@ -91,6 +112,7 @@ function Addstock() {
               <input
                 type='text'
                 placeholder='0'
+                onChange={(e) => setInfo({ ...info, quantity: parseInt(e.target.value) })}
               />
             </div>
           </div>
@@ -102,6 +124,7 @@ function Addstock() {
               <input
                 type='text'
                 placeholder='-'
+                onChange={(e) => setInfo({ ...info, unit: e.target.value })}
               />
             </div>
           </div>
@@ -109,24 +132,38 @@ function Addstock() {
         <div className={style.inputContainer}>
           <div className={style.inputMyownWrap}>
             <div className={style.inputval}>
-              <input
-                type='checkbox'
-                value='1'
-              />
+              {info.myown === 1 ? (
+                  <Checkbox 
+                    checked={true} 
+                    onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 1 : 0 })}
+                  />
+                ):(
+                  <Checkbox 
+                    checked={false}
+                    onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 1 : 0 })}
+                  />
+                )}
               <label>My-own</label>
             </div>
             <div className={style.inputval}>
-              <input
-                type='checkbox'
-                value='0'
-              />
+              {info.myown === 0 ? (
+                  <Checkbox 
+                    checked={true} 
+                    onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 0 : 1 })}
+                  />
+                ):(
+                  <Checkbox 
+                    checked={false} 
+                    onChange={(e) => setInfo({ ...info, myown: e.target.checked ? 0 : 1 })}
+                  />
+                )}
               <label>Not-Myown</label>
             </div>
           </div>
         </div>
       </div>
       <div className={style.functionBtn}>
-        <div className={style.button}>ยืนยัน</div>
+        <div className={style.button} onClick={handlesubmit}>ยืนยัน</div>
         <div className={style.button} onClick={handlebackBtn}>ยกเลิก</div>
       </div>
     </div>

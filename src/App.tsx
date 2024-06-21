@@ -20,7 +20,7 @@ function App() {
           <Route path='/manageBills' element={<Bill/>}/>
           <Route path='/manageStock' element={<Stock/>}/>
           <Route path='/manageStock/Add' element={<AddStock/>}/>
-          <Route path='/manageStock/Edit/:productId' element={<EditStock/>}/>
+          <Route path='/manageStock/Edit/:productId/:name/:price/:quantity/:unit/:myown/:usesable' element={<EditStock/>}/>
           <Route path='/manageTimes' element={<Times/>}/>
         </Routes>
       </div>
