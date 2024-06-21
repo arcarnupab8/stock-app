@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import style from "./css/datacontainer.module.css";
-import { Link } from "react-router-dom";
 
 interface DataContainerProps {
   name: string;
@@ -10,6 +9,7 @@ interface DataContainerProps {
   unit: string;
   usesable: number;
   myown: number;
+  onClick: (action: string, productid: string) => void;
 }
 
 const DataContainer: React.FC<DataContainerProps> = ({
@@ -20,6 +20,7 @@ const DataContainer: React.FC<DataContainerProps> = ({
   unit,
   usesable,
   myown,
+  onClick
 }) => {
 
   const [isOpen, setIsOpen] = useState(false);
@@ -104,8 +105,8 @@ const DataContainer: React.FC<DataContainerProps> = ({
           </div>
           {isOpen && (
             <div className={style.functionList}>
-              <Link to={`/manageStock/Edit/${productid}`}>แก้ไขข้อมูล</Link>
-              <Link to="/manageStock">ลบข้อมูล</Link>
+              <div onClick={() => onClick('edit', productid)}>แก้ไขข้อมูล</div>
+              <div onClick={() => onClick('delete', productid)}>ลบข้อมูล</div>
             </div>
           )}
         </div>

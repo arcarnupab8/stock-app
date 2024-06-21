@@ -65,6 +65,14 @@ function Stock() {
   const handleaddBtn = () =>{
     navigate('/manageStock/add');
   }
+
+  const handleAction = (action: string, productid: string) => {
+    if (action === 'edit') {
+      navigate(`/manageStock/Edit/${productid}`);
+    } else if (action === 'delete') {
+      console.log(`Delete product with id: ${productid}`);
+    }
+  };
   return (
     <div className={style.container}>
       <div className={style.filter}>
@@ -148,6 +156,7 @@ function Stock() {
               unit={item.unit}
               usesable={item.usesable}
               myown={item.myown}
+              onClick={handleAction}
             />
           ))}
           <div className={style.addBtn} onClick={handleaddBtn}>
